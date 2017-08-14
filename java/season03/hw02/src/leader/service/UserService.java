@@ -24,7 +24,7 @@ public class UserService {
 		return null;
 	}
 	/**
-	 * 如果密码不对，返回的UserSession对象里sessionId为空，客户端可以依次判断，参照UserSession.isValid方法
+	 * 濡傛灉瀵嗙爜涓嶅锛岃繑鍥炵殑UserSession瀵硅薄閲宻essionId涓虹┖锛屽鎴风鍙互渚濇鍒ゆ柇锛屽弬鐓serSession.isValid鏂规硶
 	 * @param userName
 	 * @param md5EncodedPassword
 	 * @return
