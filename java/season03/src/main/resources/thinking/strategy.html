@@ -1,0 +1,54 @@
+<html>
+<head>
+    <title>strategy</title>
+</head>
+<body>
+
+    <script>
+        function isNumber(value) {
+            return /^\d+/.test(value);
+        }
+
+        function isNotNull(value) {
+            return /^.+/.test(value);
+        }
+
+        function and(strategy1, strategy2) {
+            return function(value) {
+                return strategy1(value) && strategy2(value);
+            }
+        }
+
+        //运行时绑定
+        function test_validate1() {
+            function validate(strategy, value) {
+                return strategy(value);
+            }
+
+            let result = validate(and(isNotNull, isNumber), "1000");
+            console.log(result);
+        }
+
+
+        //通过继承绑定
+        function test_validate2() {
+            class V {
+                validate(value){};
+            }
+
+            class Validator extends V{
+                validate(value) {
+                    return and(isNotNull, isNumber)(value);
+                }
+            }
+            let result2 = new Validator().validate("1000");
+            console.log(result2);
+        }
+
+        test_validate1();
+        test_validate2();
+
+
+    </script>
+</body>
+</html>

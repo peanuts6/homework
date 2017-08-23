@@ -1,0 +1,170 @@
+<html>
+<head>
+    <title>Machine Interpreter</title>
+</head>
+<body>
+
+<script>
+    function add(machine, r1, r2, r3) {
+        //console.log("add", r1, r2, r3);
+        machine.reg[r3] = r2 + r1;
+    }
+
+    function sub(machine, r1, r2, r3) {
+        //console.log("sub", r1, r2, r3);
+        machine.reg[r3] = machine.reg[r1] - machine.reg[r2];
+    }
+
+    function jump(machine, pc) {
+        //console.log("jump ", pc);
+        machine.pc = pc;
+    }
+
+    function cmp(machine, r1, r2) {
+        let l = machine.reg[r1];
+        let r = machine.reg[r2];
+        //console.log("cmp", r1, r2);
+        if  (l > r) {
+            machine.flag = 1;
+        } else if (l == r) {
+            machine.flag = 0;
+        } else {
+            machine.flag = -1;
+        }
+    }
+
+    function beq(machine, pc) {
+        //console.log("beq", pc);
+        if (machine.flag == 0) {
+            machine.pc = pc;
+        }
+    }
+
+    function blt(machine, pc) {
+        //console.log("blt", pc);
+        if (machine.flag < 0) {
+            machine.pc = pc;
+        }
+    }
+
+    function bgt(machine, pc) {
+        //console.log("bgt", pc);
+        if (machine.flag > 0) {
+            machine.pc = pc;
+        }
+    }
+
+    function push(machine, i) {
+        machine.stack.push(i);
+    }
+
+    function pop(machine, r1) {
+        machine.reg[r1] = machine.stack.pop()
+    }
+
+    function movC(machine, c, r) {
+        //console.log("mov", c, r);
+        machine.reg[r] = c;
+    }
+
+    function print(machine, r1) {
+        console.log(machine.reg[r1])
+    }
+
+    function interp(codes, machine) {
+        let loop = 1000;
+        while(machine.pc < codes.length && loop > 0) {
+            (codes[machine.pc])(machine);
+            machine.pc++;
+            loop--;
+        }
+    }
+
+    function backfill(codes) {
+        let dict = {};
+        for (let c in codes) {
+            if (codes[c].startsWith("->")) {
+                dict[codes[c]] = c;
+            }
+        }
+        return dict;
+    }
+
+    function compile(codes) {
+        let dict = backfill(codes);
+        let i = function(s){ return parseInt(s);};
+        let r = function(s){ return parseInt(s.substring(1));};
+        let ret = [];
+        for(code of codes) {
+            let c = code.split(" ");
+            c = c.slice();
+            if (c[0] == "mov") {
+                let _1 = i(c[1]);
+                let _2 = r(c[2]);
+                ret.push(function(m) {movC(m, _1, _2);});
+            } else if (c[0] == "cmp") {
+                let _1 = r(c[1]);
+                let _2 = r(c[2]);
+                ret.push(function(m) { cmp(m, _1, _2);});
+            } else if (c[0] == "beq") {
+                let _1 = dict[c[1]];
+                ret.push(function(m) { beq(m, _1);});
+            } else if (c[0] == "blt") {
+                let _1 = dict[c[1]];
+                ret.push(function(m) { blt(m, _1); });
+            } else if (c[0] == "jump") {
+                let _1 = dict[c[1]];
+                ret.push(function(m) { jump(m, _1); });
+            } else if (c[0] == "sub") {
+                let _1 = r(c[1]);
+                let _2 = r(c[2]);
+                let _3 = r(c[3]);
+                ret.push(function(m) {sub(m, _1, _2, _3);});
+            } else if (c[0] == "print") {
+                let _1 = r(c[1]);
+                ret.push(function(m) { print(m, _1); });
+            } else if (c[0].startsWith("->")){
+                ret.push(function(m){});
+            } else {
+                throw Exception("unkown order ->" + code);
+            }
+        }
+        return ret;
+    }
+
+    function test_machine() {
+        let codes = [
+            "mov 12 r0",
+            "mov 18 r1",
+            "->gcd",
+            "cmp r0 r1",
+            "beq ->end",
+            "blt ->less",
+            "sub r0 r1 r0",
+            "jump ->gcd",
+            "->less",
+            "sub r1 r0 r1",
+            "jump ->gcd",
+            "->end",
+            "print r0"
+        ];
+
+        let orders = compile(codes);
+        let machine = {
+            stack  : [],
+            pc     : 0,
+            flag   : 0,
+            reg    : [0, 0, 0, 0, 0, 0, 0, 0] // r0, r1, r2, r3, r4, r5, r6, r7
+        };
+
+        interp(orders, machine);
+
+    }
+
+    console.log("Machine Sim !!!!");
+    test_machine();
+
+
+</script>
+</body>
+</html>

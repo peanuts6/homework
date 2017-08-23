@@ -5,20 +5,6 @@
 interface ImageReader {
     DecodedImage getDecodeImage();
 }
-
-class DecodedImage {
-    private String image;
-
-    public DecodedImage(String image) {
-        this.image = image;
-    }
-
-    @Override
-    public String toString() {
-        return image + ": is decoded";
-    }
-}
-
 class GifReader implements ImageReader {
     private DecodedImage decodedImage;
 
@@ -31,7 +17,6 @@ class GifReader implements ImageReader {
         return decodedImage;
     }
 }
-
 class JpegReader implements ImageReader {
     private DecodedImage decodedImage;
 
@@ -44,7 +29,6 @@ class JpegReader implements ImageReader {
         return decodedImage;
     }
 }
-
 class PngReader implements ImageReader {
     private DecodedImage decodedImage;
 
@@ -55,6 +39,19 @@ class PngReader implements ImageReader {
     @Override
     public DecodedImage getDecodeImage() {
         return decodedImage;
+    }
+}
+
+class DecodedImage {
+    private String image;
+
+    public DecodedImage(String image) {
+        this.image = image;
+    }
+
+    @Override
+    public String toString() {
+        return image + ": is decoded";
     }
 }
 

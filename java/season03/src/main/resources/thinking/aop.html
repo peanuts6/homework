@@ -1,0 +1,28 @@
+<html>
+<head>
+    <title>AOP</title>
+</head>
+<body>
+
+    <script>
+        (function () {
+            function say(msg) {
+                console.log(msg);
+            }
+            function aop_add_log(func) {
+                let fn = func.name;
+                let _func = window[fn];
+                window[fn] = function(){
+                    console.log("start " + fn);
+                    _func.apply(window, arguments);
+                    console.log("end " + fn);
+                }
+            }
+
+            //test
+            aop_add_log(say);
+            say("hello");
+        }());
+    </script>
+</body>
+</html>

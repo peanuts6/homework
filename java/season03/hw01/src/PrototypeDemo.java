@@ -8,24 +8,6 @@ interface ClientSession{
     String getSessionId();
     void execute();
 }
-
-class SessionModule{
-    private static List<ClientSession> clientSessions = new ArrayList<>();
-
-    public static void addSession(ClientSession cs){
-        clientSessions.add(cs);
-    }
-    public static ClientSession createSession(String sessionId){
-        for (ClientSession cs : clientSessions) {
-            if(cs.getSessionId().equals(sessionId)){
-                return cs.clone();
-            }
-        }
-        System.out.println("session id: "+sessionId +" is not exists");
-        return null;
-    }
-}
-
 class AppClient implements ClientSession{
     private String sessionId = "App";
 
@@ -58,6 +40,25 @@ class WebClient implements ClientSession{
         System.out.println("session:"+sessionId +" does something of web");
     }
 }
+
+class SessionModule{
+    private static List<ClientSession> clientSessions = new ArrayList<>();
+
+    public static void addSession(ClientSession cs){
+        clientSessions.add(cs);
+    }
+    public static ClientSession createSession(String sessionId){
+        for (ClientSession cs : clientSessions) {
+            if(cs.getSessionId().equals(sessionId)){
+                return cs.clone();
+            }
+        }
+        System.out.println("session id: "+sessionId +" is not exists");
+        return null;
+    }
+}
+
+
 
 public class PrototypeDemo {
     public static void main(String[] args){

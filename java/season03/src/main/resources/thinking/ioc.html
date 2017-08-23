@@ -1,0 +1,92 @@
+<html>
+<head>
+    <title>IOC</title>
+</head>
+<body>
+
+
+    <script>
+        (function() {
+            let c = {};
+            class Hello {
+                say() {
+                    c["world"].say();
+                }
+            }
+
+            class World {
+                say() {
+                    console.log("hello world");
+                }
+            }
+
+            //config
+            c["hello"] = new Hello();
+            c["world"] = new World();
+
+            //use
+            let hello = c["hello"];
+            hello.say();
+        }());
+    </script>
+
+    <script>
+        (function () {
+            let c = {};
+            class Hello{
+                constructor(world){
+                    this.world = world;
+                }
+                say(){
+                    this.world.say();
+                }
+            }
+
+            class World{
+                say(){
+                    console.log("hello world");
+                }
+            }
+
+            //config
+            c["hello"]=new Hello(new World());
+
+            //use
+            let hello = c["hello"];
+            hello.say();
+        }());
+    </script>
+    <script>
+        (function () {
+            let c = {};
+            class Hello{
+                constructor(world){
+                    this.world = world;
+                }
+                say(){
+                    this.world.say();
+                }
+            }
+
+            class World{
+                say(){
+                    console.log("hello world");
+                }
+            }
+            class World2{
+                say(){
+                    console.log("hello world2");
+                }
+            }
+
+            //config
+            c["hello"]=new Hello(new World());
+            c["hello"]=new Hello(new World2());
+
+            //use
+            let hello = c["hello"];
+            hello.say();
+        }());
+    </script>
+</body>
+</html>
