@@ -1,24 +1,23 @@
-import java.util.Date;
-
+/**
+ * Created by xqy on 17/8/27.
+ */
 import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
+import org.springframework.context.support.*;
+import xqy.bean.HelloWorldBean;
 
-public class Main {  
-  
-    public static void main(String[] args) throws InterruptedException {  
-        System.out.println(new Date()+ "  begin");  
-//      HelloWorld helloworld = new HelloWorld();  
-//      helloworld.setName("hfkjdshf");  
-          
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("applicationContext.xml");  
-       
-        Thread.sleep(5000);
-        HelloWorldBean helloworld = (HelloWorldBean) ctx.getBean("helloBean");  
-        System.out.println(new Date()+ " get bean "+helloworld);
-        Thread.currentThread();
-		Thread.sleep(5000);
-        helloworld.hello(); 
-       
-          
-    }  
-}  
+import java.util.*;
+
+public class main {
+    public static void main(String[] args) throws InterruptedException{
+        System.out.println(new Date() + " begin");
+        ApplicationContext ctx =
+                new ClassPathXmlApplicationContext("application.xml");
+        //ApplicationContext ctx =
+        // new FileSystemXmlApplicationContext("hw03/src/main/resources/application.xml");
+
+        HelloWorldBean helloWorldBean = (HelloWorldBean) ctx.getBean("helloBean");
+        System.out.println(new Date()+" get bean "+helloWorldBean);
+
+        helloWorldBean.sayHello();
+    }
+}

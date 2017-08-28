@@ -1,0 +1,20 @@
+package xqy.bean;
+/**
+ * Created by xqy on 17/8/27.
+ */
+import org.springframework.stereotype.Component;
+
+import java.util.Date;
+
+public class HelloWorldBean {
+    private String myName;
+    public HelloWorldBean(){
+        System.out.println(new Date() + "created "+ this);
+    }
+    public void sayHello(){
+        System.out.println(new Date() + " hellow "+myName +" @ "+this);
+    }
+    public void setMyName(String myName){
+        this.myName = myName;
+    }
+}

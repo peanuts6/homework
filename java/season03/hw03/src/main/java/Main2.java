@@ -1,20 +1,24 @@
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.*;
+import xqy.bean.ConfigurableBean;
+
 import java.util.Date;
 
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+/**
+ * Created by xqy on 17/8/28.
+ */
+public class main2 {
+    public static void main(String[] args) throws InterruptedException {
+        System.out.println(new Date() + " begin");
+        ApplicationContext ctx =
+                new ClassPathXmlApplicationContext("application2.xml");
 
-public class Main2 {  
-  
-    public static void main(String[] args) throws InterruptedException {  
-        System.out.println(new Date()+ "  begin");  
-//      HelloWorld helloworld = new HelloWorld();  
-//      helloworld.setName("hfkjdshf");  
-          
-        ApplicationContext ctx = 
-        		   new AnnotationConfigApplicationContext(HelloWorldConfig.class);
-        HelloWorldBean helloworld = (HelloWorldBean) ctx.getBean("helloBean");  
-        helloworld.hello(); 
-       
-          
-    }  
-}  
+        ConfigurableBean bean = (ConfigurableBean) ctx.getBean("configurableBean");
+        bean.setMyName("i am configurable bean");
+        System.out.println(new Date()+" get bean "+bean);
+
+        bean.sayHello();
+    }
+}
