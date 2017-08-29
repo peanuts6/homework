@@ -16,7 +16,7 @@ public class main {
         // new FileSystemXmlApplicationContext("hw03/src/main/resources/application.xml");
 
         HelloWorldBean helloWorldBean = (HelloWorldBean) ctx.getBean("helloBean");
-        System.out.println(new Date()+" get bean "+helloWorldBean);
+        System.out.println(new Date()+" get domain "+helloWorldBean);
 
         helloWorldBean.sayHello();
     }

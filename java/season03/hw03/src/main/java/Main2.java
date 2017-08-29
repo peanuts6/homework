@@ -16,8 +16,8 @@ public class main2 {
                 new ClassPathXmlApplicationContext("application2.xml");
 
         ConfigurableBean bean = (ConfigurableBean) ctx.getBean("configurableBean");
-        bean.setMyName("i am configurable bean");
-        System.out.println(new Date()+" get bean "+bean);
+        bean.setMyName("i am configurable domain");
+        System.out.println(new Date()+" get domain "+bean);
 
         bean.sayHello();
     }

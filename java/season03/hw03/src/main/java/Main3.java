@@ -19,8 +19,8 @@ public class main3 {
         ApplicationContext ctx = new AnnotationConfigApplicationContext(main3.class);
 
         AnnotationBean bean = (AnnotationBean) ctx.getBean("annotationBean");
-        bean.setMyName("i am annotation bean");
-        System.out.println(new Date()+" get bean "+bean);
+        bean.setMyName("i am annotation domain");
+        System.out.println(new Date()+" get domain "+bean);
 
         bean.sayHello();
     }

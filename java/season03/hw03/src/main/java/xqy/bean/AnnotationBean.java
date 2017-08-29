@@ -15,6 +15,13 @@ public class AnnotationBean {
         this.myName = name;
     }
     public void sayHello(){
-        System.out.println("hello annotation bean");
+        System.out.println("hello annotation domain");
+    }
+
+    public void init(){
+        System.out.println("Bean is going through init.");
+    }
+    public void destroy() {
+        System.out.println("Bean will destroy now.");
     }
 }

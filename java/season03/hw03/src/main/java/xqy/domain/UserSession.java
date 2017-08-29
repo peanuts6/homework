@@ -1,21 +1,33 @@
-package xqy.hw03.bean;
+package xqy.domain;
 
-import org.springframework.stereotype.Component;
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 /**
  * Created by xqy on 17/8/27.
  */
-
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class UserSession {
+
     private String sessionId;
     private long userId;
     private String userName;
     private long createTime;
     private short validSeconds;
 
-    public UserSession UserSession(short validSeconds){
+    public UserSession(long userId,String userName,long createTime,short validSeconds){
+        this.userId = userId;
+        this.userName = userName;
+        this.createTime = createTime;
         this.validSeconds = validSeconds;
-        return null;
+        if(userId == 0){
+            sessionId = "";
+        } else{
+            sessionId = sign();
+        }
+    }
+    public String sign(){
+        return "";
     }
 
     public String getSessionId() {
@@ -53,15 +65,23 @@ public class UserSession {
         this.validSeconds = validSeconds;
     }
 
-//    public UserSession clone(){
-//        return new UserSession();
-//    }
-
     public void init(){
         System.out.println("Bean is going through init.");
     }
     public void destroy() {
         System.out.println("Bean will destroy now.");
+    }
+
+
+    @Override
+    public String toString(){
+        return "UserSession{" +
+                "sessionId='"+sessionId +
+                "\', userId="+userId +
+                ", userName='"+userName+
+                "\', validSeconds='"+validSeconds+
+                ", createTime='"+createTime+
+                "\'}";
     }
 }
 
