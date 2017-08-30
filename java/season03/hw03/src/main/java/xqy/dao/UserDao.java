@@ -1,6 +1,7 @@
 package xqy.dao;
 
 import xqy.domain.User;
+import xqy.util.DataSource;
 
 import java.util.*;
 
@@ -10,11 +11,15 @@ import java.util.*;
 public class UserDao {
     private DataSource dataSource;
 
-    public UserDao(DataSource dataSource){
-        this.dataSource = dataSource;
+    public UserDao(DataSource ds){
+        this.dataSource = ds;
     }
 
-    public List<User> userList(){
+    public List<User> getUsers(){
         return dataSource.getAll();
+    }
+
+    public Map<String,String> getAccount(){
+        return dataSource.getAcount();
     }
 }

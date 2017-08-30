@@ -2,13 +2,12 @@ package xqy.util;
 
 import org.springframework.context.annotation.Profile;
 import xqy.domain.User;
-
 import java.util.*;
 
 /**
  * Created by xqy on 17/8/30.
  */
-public class TestDataSource implements UserList,Account{
+public class TestDataSource implements DataSource{
 
     public List<User> getAll() {
         List<User> users = new ArrayList<User>();
@@ -20,7 +19,7 @@ public class TestDataSource implements UserList,Account{
     }
 
     public Map<String, String> getAcount() {
-        Map<String,String> m = new HashMap();
+        Map<String,String> m = new HashMap<>();
         m.put("username","test");
         m.put("password","3125");
         return m;

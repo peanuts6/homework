@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * Created by xqy on 17/8/30.
  */
-public class ProductionDataSource implements UserList,Account {
+public class ProductionDataSource implements DataSource {
 
     public List<User> getAll() {
         List<User> users = new ArrayList<User>();

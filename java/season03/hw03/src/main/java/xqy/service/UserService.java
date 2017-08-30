@@ -1,12 +1,11 @@
 package xqy.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import xqy.dao.UserDao;
 import xqy.domain.User;
 import xqy.domain.UserSession;
 
 import java.util.*;
-import xqy.util.*;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
@@ -14,15 +13,16 @@ import java.util.concurrent.atomic.AtomicLong;
  */
 @RestController
 public class UserService {
-    @Autowired
-    private Account admin;
-    private UserList users;
+    private UserDao userDao;
+    private Map<String,String> admin;
+    private List<User> users;
     private final AtomicLong counter = new AtomicLong();
     private short validSeconds = 1;
 
-    public UserService(UserList users,Account m){
-        this.users = users;
-        this.admin = m;
+    public UserService(UserDao userDao){
+        this.userDao = userDao;
+        this.users = userDao.getUsers();
+        this.admin = userDao.getAccount();
     }
 
     @RequestMapping(value = "/user/{userId}", method = RequestMethod.GET)
