@@ -6,18 +6,19 @@
 
 
     <script>
-        (function() {
-            let c = {};
-            class Hello {
-                say() {
-                    c["world"].say();
-                }
-            }
 
-            class World {
-                say() {
-                    console.log("hello world");
-                }
+        (function() {
+            var c = {};
+            function Hello() {
+
+            }
+            Hello.prototype.say = function() {
+                c["world"].say();
+            };
+
+            function World (){}
+            World.prototype.say = function () {
+                console.log("hello world");
             }
 
             //config
@@ -25,9 +26,32 @@
             c["world"] = new World();
 
             //use
-            let hello = c["hello"];
+            var hello = c["hello"];
             hello.say();
         }());
+
+//        (function() {
+//            let c = {};
+//            class Hello {
+//                say() {
+//                    c["world"].say();
+//                }
+//            }
+//
+//            class World {
+//                say() {
+//                    console.log("hello world");
+//                }
+//            }
+//
+//            //config
+//            c["hello"] = new Hello();
+//            c["world"] = new World();
+//
+//            //use
+//            let hello = c["hello"];
+//            hello.say();
+//        }());
     </script>
 
     <script>

@@ -1,5 +1,5 @@
 /**
- * Created by xqy on 17/8/12.
+ * Created by leader on 17/8/12.
  */
 public class Singleton {
     private static volatile Singleton instance;

@@ -1,5 +1,5 @@
 /**
- * Created by xqy on 17/8/21.
+ * Created by leader on 17/8/21.
  */
 interface Strategy{
     boolean validate(String val);

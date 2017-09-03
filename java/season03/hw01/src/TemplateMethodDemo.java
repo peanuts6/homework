@@ -1,5 +1,5 @@
 /**
- * Created by xqy on 17/8/15.
+ * Created by leader on 17/8/15.
  */
 abstract class Generalization {
     //算法步骤骨架

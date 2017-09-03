@@ -1,7 +1,5 @@
-/**
- * Created by xqy on 17/8/12.
- */
-import java.io.*;
+
+import java.io.File;
 
 interface Persistence{
     public String persist(Object object);

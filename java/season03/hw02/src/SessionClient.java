@@ -2,7 +2,7 @@ import java.io.*;
 import java.net.*;
 
 /**
- * Created by xqy on 17/8/16.
+ * Created by leader on 17/8/16.
  * java -cp ./ SessionClient
  * login username md5password
  * send message

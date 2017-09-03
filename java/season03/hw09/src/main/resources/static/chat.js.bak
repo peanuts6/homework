@@ -18,19 +18,19 @@ $("#sendBtn").click((function() {creatSendDiv();}));
 function creatSendDiv() {
 	      $("<div/>", { "class": "chat-widget-left"})
 	      .append($("#mywords").val())
-	      .appendTo("#chat-main");   
+	      .appendTo("#chat-Main1");
         $("<div/>", { "class": "chat-widget-name-left"})
        .append($("<h4>Power Man</h4>"))
-       .appendTo("#chat-main");
-       $("#widget-main").scroll()
+       .appendTo("#chat-Main1");
+       $("#widget-Main1").scroll()
     }
 function creatRecvDiv(msg) {
 	      $("<div/>", { "class": "chat-widget-right"})
 	      .append(msg)
-	      .appendTo("#chat-main");   
+	      .appendTo("#chat-Main1");
         $("<div/>", { "class": "chat-widget-name-right"})
        .append($("<h4>Little Robot </h4>"))
-       .appendTo("#chat-main");
-       $("#widget-main").scroll()
+       .appendTo("#chat-Main1");
+       $("#widget-Main1").scroll()
     }
     

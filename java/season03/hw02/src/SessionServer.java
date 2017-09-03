@@ -7,7 +7,7 @@ import java.util.concurrent.*;
 import java.util.*;
 
 /**
- * Created by xqy on 17/8/20.
+ * Created by leader on 17/8/20.
  */
 public class SessionServer {
     String str,requestUrl,method;
@@ -136,7 +136,7 @@ public class SessionServer {
                 token = us.getSessionId();
             }
         }else{
-            msg = "welcome to xqy service";
+            msg = "welcome to leader service";
         }
         response +="Content-Length: "+(msg.length())+"\r\n";
         response +="Connection: keep-alive\r\n";

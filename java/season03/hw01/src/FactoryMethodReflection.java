@@ -1,7 +1,7 @@
 import java.lang.reflect.*;
 
 /**
- * Created by xqy on 17/8/22.
+ * Created by leader on 17/8/22.
  */
 
 public class FactoryMethodReflection {

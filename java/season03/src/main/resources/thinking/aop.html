@@ -10,8 +10,8 @@
                 console.log(msg);
             }
             function aop_add_log(func) {
-                let fn = func.name;
-                let _func = window[fn];
+                var fn = func.name;
+                var _func = window[fn];
                 window[fn] = function(){
                     console.log("start " + fn);
                     _func.apply(window, arguments);

@@ -16,7 +16,6 @@ import leader.bean.KeyValueBean;
 import leader.bean.LdClassSummary;
 
 @RestController
-
 public class AdminController {
 	Logger logger = LoggerFactory.getLogger(AdminController.class);
 
