@@ -9,11 +9,11 @@ import leader.service.HelloWorldBean2;
 @Configurable
 public class MyOrder {
 
-@Resource	
-private HelloWorldBean2 hellBean;
+	@Resource
+	private HelloWorldBean2 hellBean;
 
-public HelloWorldBean2 getHellBean() {
-	return hellBean;
-}
+	public HelloWorldBean2 getHellBean() {
+		return hellBean;
+	}
 
 }

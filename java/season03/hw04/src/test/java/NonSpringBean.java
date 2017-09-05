@@ -11,6 +11,7 @@ public class NonSpringBean {
         GenericXmlApplicationContext ctx = new GenericXmlApplicationContext("applicationContext2.xml");
         MyOrder myOrder = new MyOrder();
         HelloWorldBean2 h2 = myOrder.getHellBean();
+        h2.setMyName("sdfsf");
         h2.hello();
         System.out.println(" isAopProxy  " + AopUtils.isAopProxy(myOrder));
         System.out.println(" isCglibProxy  " + AopUtils.isCglibProxy(myOrder));

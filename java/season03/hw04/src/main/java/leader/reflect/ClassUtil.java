@@ -11,6 +11,7 @@ public class ClassUtil {
 	    ArrayList<File> list = new ArrayList<File>();
 	    Enumeration<URL> urls = Thread.currentThread().getContextClassLoader()
 	                            .getResources(packageName);
+
 	    while (urls.hasMoreElements()) {
 	        URL url = urls.nextElement();
 	        File dir = new File(url.getFile());
