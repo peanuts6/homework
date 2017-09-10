@@ -5,7 +5,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 /**
- * Created by xqy on 17/9/4.
+ * Created by leader05 on 17/9/4.
  */
 public class LdOrderServiceTest {
     public static void main(String[] args) {

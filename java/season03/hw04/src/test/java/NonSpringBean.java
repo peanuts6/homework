@@ -4,7 +4,7 @@ import org.springframework.aop.support.AopUtils;
 import org.springframework.context.support.GenericXmlApplicationContext;
 
 /**
- * Created by xqy on 17/9/4.
+ * Created by leader05 on 17/9/4.
  */
 public class NonSpringBean {
     public static void main(String[] args) throws InterruptedException {

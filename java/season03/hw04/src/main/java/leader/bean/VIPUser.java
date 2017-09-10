@@ -3,7 +3,7 @@ package leader.bean;
 import java.util.Date;
 
 /**
- * Created by xqy on 17/9/4.
+ * Created by leader05 on 17/9/4.
  */
 public class VIPUser {
     private int userId;

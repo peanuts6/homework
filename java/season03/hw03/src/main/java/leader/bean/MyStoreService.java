@@ -5,7 +5,7 @@ import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by xqy on 17/9/3.
+ * Created by leader05 on 17/9/3.
  */
 @Component
 public class MyStoreService {

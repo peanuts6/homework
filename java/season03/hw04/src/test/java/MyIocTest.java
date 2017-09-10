@@ -1,17 +1,13 @@
-import xqy.domain.AbstractComponent;
-import xqy.domain.OneComponent;
-import xqy.domain.TwoComponent;
-import xqy.service.HelloBean;
-import xqy.service.HelloBean2;
-import xqy.service.MyIocContext;
-
-import java.lang.annotation.Annotation;
-import java.util.*;
-import java.io.*;
+import leader05.domain.AbstractComponent;
+import leader05.domain.OneComponent;
+import leader05.domain.TwoComponent;
+import leader05.service.HelloBean;
+import leader05.service.HelloBean2;
+import leader05.service.MyIocContext;
 
 
 /**
- * Created by xqy on 17/9/5.
+ * Created by leader05 on 17/9/5.
  */
 public class MyIocTest {
     public static void main(String[] args) throws IllegalAccessException, IllegalArgumentException, ClassNotFoundException {
