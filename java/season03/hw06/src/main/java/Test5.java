@@ -1,7 +1,5 @@
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-
 import spring.services.MyDemoService;
-import spring.services.MyDemoServiceIntf;
 
 public class Test5 {
 

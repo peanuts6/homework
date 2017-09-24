@@ -1,4 +1,4 @@
-public class Machine {
+public class Machine0 {
     private int[] regs = {0,0,0,0,0,0,0,0};//r0, r1, r2, r3, r4, r5, r6, r7
     private int   flag = 0;
     private int   pc   = 0;
@@ -140,7 +140,7 @@ public class Machine {
     }
 
     public static void main(String[] args) {
-        Machine m = new Machine();
+        Machine0 m = new Machine0();
         Command[] commands= {
                     m.new MovC(12, 0),
                     m.new MovC(18, 1),

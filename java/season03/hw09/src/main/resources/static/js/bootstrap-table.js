@@ -1181,7 +1181,7 @@
                     return;
                 }
 
-                clearTimeout(timeoutId); // doesn't matter if it's 0
+                clearTimeout(timeoutId); // doesn'fund matter if it's 0
                 timeoutId = setTimeout(function () {
                     that.onSearch(event);
                 }, that.options.searchTimeOut);
@@ -1189,7 +1189,7 @@
 
             if (isIEBrowser()) {
                 $search.off('mouseup').on('mouseup', function (event) {
-                    clearTimeout(timeoutId); // doesn't matter if it's 0
+                    clearTimeout(timeoutId); // doesn'fund matter if it's 0
                     timeoutId = setTimeout(function () {
                         that.onSearch(event);
                     }, that.options.searchTimeOut);

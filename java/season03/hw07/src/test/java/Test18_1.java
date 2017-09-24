@@ -10,25 +10,22 @@ public class Test18_1 {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Tx1JavaConfig4.class);
 		MyLessionService4 lessionSvc = ctx.getBean(MyLessionService4.class);
 		System.out.println("lessionSvc "+lessionSvc.getClass().getName());
-		try
-		{
-		lessionSvc.autoAddSessions();
-		}catch(Exception e)
-		{
+
+		try {
+			lessionSvc.autoAddSessions();
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		try
-		{
+
+		try {
 			lessionSvc.addNewLession("leader.us.1111", 9999);
-		}catch(Exception e)
-		{
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
-		try
-		{
+
+		try {
 			lessionSvc.addNewLession("java.1111", 9999);
-		}catch(Exception e)
-		{
+		}catch(Exception e) {
 			e.printStackTrace();
 		}
 		 

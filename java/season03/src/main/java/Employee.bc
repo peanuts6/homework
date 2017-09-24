@@ -1,0 +1,25 @@
+Compiled from "Employee.java"
+public class Employee {
+  java.lang.String employeeName;
+
+  int employeeNumber;
+
+  public Employee(java.lang.String, int);
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: aload_1
+       6: putfield      #2                  // Field employeeName:Ljava/lang/String;
+       9: aload_0
+      10: iload_2
+      11: putfield      #3                  // Field employeeNumber:I
+      14: return
+
+  public void storeData(java.lang.String, int);
+    Code:
+       0: getstatic     #4                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       3: ldc           #5                  // String store
+       5: invokevirtual #6                  // Method java/io/PrintStream.println:(Ljava/lang/String;)V
+       8: return
+}

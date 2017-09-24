@@ -1,11 +1,11 @@
 package aop.aspects;
 
-import java.util.Arrays;
-
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Component
 @Aspect
@@ -23,8 +23,10 @@ public class MyAspect1 {
 	@Before("execution(* spring.services.*.*(..))")
 	public void traceBusiness(JoinPoint jp) {
 		System.out.println("joinpoint [  "+jp.getKind() + " ,declaringTypeName "
-				+ jp.getSignature().getDeclaringTypeName()+"\r\n this "+jp.getThis().getClass().getName() + "\r\n,target:" + jp.getTarget() + " , method "
-				+ jp.getSignature().getName() + ",args:" + Arrays.toString(jp.getArgs()));
-
+				+ jp.getSignature().getDeclaringTypeName()
+				+ "\r\n this "+jp.getThis().getClass().getName()
+				+ "\r\n,target:" + jp.getTarget()
+				+ "\r\n,method " + jp.getSignature().getName()
+				+ "\r\n,args:" + Arrays.toString(jp.getArgs()));
 	}
 }

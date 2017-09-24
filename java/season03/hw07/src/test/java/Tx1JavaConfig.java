@@ -23,8 +23,8 @@ public class Tx1JavaConfig {
 		System.out.println("datasource created ");
 		DriverManagerDataSource ds = new DriverManagerDataSource();
 		ds.setDriverClassName("com.mysql.cj.jdbc.Driver");
-		ds.setUrl("jdbc:mysql://localhost:3306/leaderdb?serverTimezone=UTC");
-		ds.setUsername("leaderus");
+		ds.setUrl("jdbc:mysql://localhost:3306/tcourse?serverTimezone=UTC");
+		ds.setUsername("root");
 		ds.setPassword("123456");
 		return ds;
 	}

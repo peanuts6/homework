@@ -14,8 +14,8 @@ import java.util.List;
 public class App {
     public static void main(String[] args){
         AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext();
-        ctx.getEnvironment().setActiveProfiles("production");
-//        ctx.getEnvironment().setActiveProfiles("test");
+//        ctx.getEnvironment().setActiveProfiles("production");
+        ctx.getEnvironment().setActiveProfiles("test");
         ctx.register(DataSourceConfig.class);
         ctx.register(AppConfig.class);
         ctx.refresh();

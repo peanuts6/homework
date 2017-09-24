@@ -10,11 +10,9 @@ public class Test17_3 {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(Tx1JavaConfig2.class);
 		MyLessionService5 lessionSvc = ctx.getBean(MyLessionService5.class);
 		System.out.println("lessionSvc "+lessionSvc.getClass().getName());
-		try
-		{
-		lessionSvc.autoAddSessions();
-		}catch(Exception e)
-		{
+		try {
+			lessionSvc.autoAddSessions();
+		}catch(Exception e){
 			e.printStackTrace();
 		}
 		lessionSvc.addNewLession("leaderus.1111", 9999);

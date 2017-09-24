@@ -8,6 +8,7 @@ public class Test4 {
 		AnnotationConfigApplicationContext ctx = new AnnotationConfigApplicationContext(MySpringConfig.class);
 		MyTestService2 mybean = (MyTestService2) ctx.getBean("myTestService2");
 		mybean.doBusinessBBB(true);
+		mybean.doBusinessCCC();
 		ctx.close();
 	}
 

@@ -1,18 +1,13 @@
-import java.io.IOException;
-import java.sql.SQLException;
-import java.util.logging.ConsoleHandler;
-import java.util.logging.Level;
-import java.util.logging.LogManager;
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
-
 import tx.MyLessionService;
 import util.LogUtil;
-import util.ThreadLocalUtil;
+
+import java.io.IOException;
+import java.sql.SQLException;
 
 public class Test15 {
 
@@ -37,18 +32,14 @@ public class Test15 {
 	    def.setPropagationBehavior(TransactionDefinition.PROPAGATION_NESTED);  
 	    def.setTimeout(300);
 	    TransactionStatus secondStatus = txMan.getTransaction(def); 
-	    try
-	    {
-		lessionSvc.queryLessions();
+	    try {
+			lessionSvc.queryLessions();
 		
-		if(true)
-		{
-			throw new RuntimeException("failed trans");
-		}
-		txMan.commit(secondStatus);
-	    }catch(Exception e)
-	    {
-	    	
+			if (true) {
+				throw new RuntimeException("failed trans");
+			}
+			txMan.commit(secondStatus);
+	    }catch(Exception e) {
 	    	e.printStackTrace();
 	    	txMan.rollback(secondStatus);
 	    }

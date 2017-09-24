@@ -1,10 +1,10 @@
 package leader05.service;
 
-import javax.sql.DataSource;
-
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.support.DefaultTransactionStatus;
+
+import javax.sql.DataSource;
 
 public class MyTraceTransactionManager extends DataSourceTransactionManager{
 

@@ -9,7 +9,6 @@ import java.util.List;
 /**
  * Created by leader05 on 17/9/8.
  */
-//@Component
 public class MyCourseService {
 
     CourseRepository repository;

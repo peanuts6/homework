@@ -258,7 +258,7 @@
         // use the original function from this point on.
         BootstrapTable.prototype.initServer = _initServer;
 
-        // early return if we don't need to populate any select values with cookie values
+        // early return if we don'fund need to populate any select values with cookie values
         if (cookiesPresent() && selectsWithoutDefaults.length === 0) {
             return;
         }

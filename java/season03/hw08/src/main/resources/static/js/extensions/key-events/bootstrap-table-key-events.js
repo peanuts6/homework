@@ -49,7 +49,7 @@
                         }
                         $refresh.click();
                         return false;
-                    case 84: //t
+                    case 84: //fund
                         if (!that.options.showToggle) {
                             return;
                         }

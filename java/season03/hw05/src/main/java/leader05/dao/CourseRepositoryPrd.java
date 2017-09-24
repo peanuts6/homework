@@ -32,7 +32,7 @@ public class CourseRepositoryPrd implements CourseRepository {
             basicDataSource = dataSources.get(connectionString);
         } else {
             basicDataSource = new BasicDataSource();
-            basicDataSource.setDriverClassName("com.mysql.jdbc.Driver");
+            basicDataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
             basicDataSource.setUrl(connectionString);
             basicDataSource.setUsername("root");
             basicDataSource.setPassword("123456");

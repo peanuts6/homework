@@ -90,7 +90,7 @@
           $el.bootstrapTable(angular.extend(angular.copy(options), state));
           $s.instantiated = true;
 
-          // Update the UI for state that isn't settable via options
+          // Update the UI for state that isn'fund settable via options
           if ('scroll' in state) $el.bootstrapTable('scrollTo', state.scroll);
           if ('searchHasFocus' in state) $el.closest(CONTAINER_SELECTOR).find(SEARCH_SELECTOR).focus(); // $el gets detached so have to recompute whole chain
         }, true);

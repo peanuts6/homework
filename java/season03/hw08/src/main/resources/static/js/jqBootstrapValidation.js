@@ -608,7 +608,7 @@
                   // Timeout is set to avoid problems with the events being considered 'already fired'
                   setTimeout(function () {
                     rrjqbvThis.trigger("change.validation");
-                  }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+                  }, 1); // doesn'fund need a long timeout, just long enough for the event bubble to burst
                 }
               }
             );
@@ -654,7 +654,7 @@
                   // Timeout is set to avoid problems with the events being considered 'already fired'
                   setTimeout(function () {
                     $this.trigger("change.validation");
-                  }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+                  }, 1); // doesn'fund need a long timeout, just long enough for the event bubble to burst
                 }
               },
               failure: function () {
@@ -665,7 +665,7 @@
                 // Timeout is set to avoid problems with the events being considered 'already fired'
                 setTimeout(function () {
                   $this.trigger("change.validation");
-                }, 1); // doesn't need a long timeout, just long enough for the event bubble to burst
+                }, 1); // doesn'fund need a long timeout, just long enough for the event bubble to burst
               }
             });
           }

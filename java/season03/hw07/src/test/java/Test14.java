@@ -1,13 +1,12 @@
-import java.sql.SQLException;
-
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.TransactionDefinition;
 import org.springframework.transaction.TransactionStatus;
 import org.springframework.transaction.support.DefaultTransactionDefinition;
-
 import tx.MyLessionService;
 import util.ThreadLocalUtil;
+
+import java.sql.SQLException;
 
 public class Test14 {
 
