@@ -1,10 +1,10 @@
 package util;
 
+import org.springframework.core.NamedThreadLocal;
+
 import java.lang.ref.Reference;
 import java.lang.reflect.Field;
 import java.util.Arrays;
-
-import org.springframework.core.NamedThreadLocal;
 
 public class ThreadLocalUtil {
 	public static void dumphreadLocals() {
@@ -34,6 +34,7 @@ public class ThreadLocalUtil {
 			Field referentField = Reference.class.getDeclaredField("referent");
 			referentField.setAccessible(true);
 
+			System.out.println("______________ [ dump thread start ] ------------");
 			for (Object entry : table) {
 				// Each entry in the table array of ThreadLocalMap is an Entry
 				// object
@@ -49,7 +50,7 @@ public class ThreadLocalUtil {
 					printObject(threadLocal, tlcValue);
 				}
 			}
-			System.out.println("__________________________");
+			System.out.println("______________ [ dump  thread  end ] ------------");
 		} catch (Exception e) {
 			// We will tolerate an exception here and just log it
 			throw new IllegalStateException(e);
@@ -60,7 +61,7 @@ public class ThreadLocalUtil {
 	private static void printObject(ThreadLocal threadLocal, Object obj) {
 		String threadLocalCls=threadLocal.getClass().getName();
 		if (threadLocal instanceof NamedThreadLocal) {
-			System.out.print("......Spring threadlocal var: "+threadLocal+"=");
+			System.out.print("...Spring threadlocal var: "+threadLocal+"=");
 		} else if(obj==null || threadLocalCls.startsWith("java") ||threadLocalCls.startsWith("sun")){
 			return;
 		}

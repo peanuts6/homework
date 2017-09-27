@@ -1,1 +1,0 @@
-insert into myorder(aaa,bbb,ccc) values('1','2','3')

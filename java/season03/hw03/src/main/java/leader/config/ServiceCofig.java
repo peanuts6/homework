@@ -6,7 +6,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import leader.service.UserService;
 import leader.dao.*;
-import leader.util.DataSource;
+import util.DataSource;
 
 /**
  * Created by leader on 17/8/30.

@@ -1,4 +1,4 @@
-package leader.util;
+package util;
 
 import leader.domain.User;
 
