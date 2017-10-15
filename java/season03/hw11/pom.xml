@@ -91,7 +91,7 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
                 <configuration>
-                    <mainClass>leader.App</mainClass>
+                    <mainClass>leader.App_11</mainClass>
                 </configuration>
                 <executions>
                     <execution>

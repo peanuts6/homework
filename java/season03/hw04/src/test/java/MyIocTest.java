@@ -1,9 +1,9 @@
-import leader05.domain.AbstractComponent;
-import leader05.domain.OneComponent;
-import leader05.domain.TwoComponent;
-import leader05.service.HelloBean;
-import leader05.service.HelloBean2;
-import leader05.service.MyIocContext;
+import xqy.domain.AbstractComponent;
+import xqy.domain.OneComponent;
+import xqy.domain.TwoComponent;
+import xqy.service.HelloBean;
+import xqy.service.HelloBean2;
+import xqy.service.MyIocContext;
 
 
 /**
