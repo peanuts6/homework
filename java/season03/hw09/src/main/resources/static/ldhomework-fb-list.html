@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>edu.ldcollege-作业列表</title>
+
+    <!-- plugin stylesheet -->
+
+    <!-- customer stylesheet -->
+    <link href="assets/styles/main.css" rel="stylesheet">
+</head>
+<body>
+	<div id="app">
+		<div class="page-top">
+			<div class="container">
+			<div class="row">
+    			<h1 class="brand col-xs-12 col-sm-12 col-lg-4 text-center text-xs-center text-sm-center text-lg-left"><a href="/">LEADER.US</a></h1>
+    			<nav class="navbox ml-auto col-xs-12 col-sm-12 col-lg-8 text-center text-sm-center text-lg-right">
+					<ul class="nav nav-fill float-lg-right">
+						<li class="nav-item">
+							<a class="nav-link" href="/">首页 <span class="sr-only">(current)</span><em></em></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="ldhomework-fb-list.html">查看作业<em></em></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="ldhomework-upload.html">上传作业<em></em></a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="aboutus.html">关于我们<em></em></a>
+						</li>
+						
+					</ul>
+				</nav>
+				</div>
+    		</div>
+		</div>
+		<div class="page-body mt-4">
+			<div class="container">
+				<div class="row">
+					<h2>查看作业</h2>
+				</div>
+			</div>
+			<div class="container mt-4">
+				<form class="form-inline">
+					<select class="form-control" id="classId">
+					    <option selected>选择班级...</option>
+					    <option value="1">黄埔一期</option>
+					    <option value="2">黄埔二期</option>
+					    <option value="3">黄埔三期</option>
+					</select>
+				  <button type="button" id="btn-search" class="btn btn-primary ml-2">搜索</button>
+				</form>
+			</div>
+			<div class="container mt-2">
+				<table class="table" id="hwTable">
+				  <thead>
+				    <tr>
+				      <th>学员ID</th>
+				      <th>作业名称</th>
+				      <th>提交时间</th>
+				      <th>点赞数</th>
+				      <th>差评数</th>
+				      <th>优秀作业？</th>
+				      <th>批改？</th>
+				      <th>操作</th>
+				    </tr>
+				  </thead>
+				  <tbody>
+				  	<tr>
+				  		<td colspan="8">
+				  			<span>暂无数据</span>
+				  			<button class="btn-feedback">feedback</button>
+				  			<button class="btn-viewfeedback">view</button>
+				  		</th>
+				  	</tr>
+				  </tbody>
+				</table>
+				
+			</div>
+		</div>
+		
+		<div class="page-foot mt-4">
+			<div class="container">
+    				<div class="media">
+					  <img class="d-flex align-self-center rounded-circle mr-3" src="assets/images/img-cat.png" alt="mycat">
+					  <div class="media-body">
+					    <h5 class="mt-0">报名群：332702697 </h5>
+					    <p>既然选择了IT路，就只能狂奔，任何年度都是新技术挣钱多，但新旧技术有传承，所持续提升自己就无法跟上新技术，年老色衰最后只能为五斗米折腰。</p>
+					    <p class="mb-0 text-right">——《末路狂奔在IT路上》</p>
+					  </div>
+					</div>
+    		</div>
+		</div>
+	</div>
+	
+	<!-- 作业互评弹出框 -->
+	<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModal" aria-hidden="true">
+					<div class="modal-dialog" role="document">
+					<div class="modal-content">
+				      <div class="modal-header">
+				        <h5 class="modal-title" id="exampleModalLabel">作业互评</h5>
+				        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				          <span aria-hidden="true">&times;</span>
+				        </button>
+				      </div>
+				      <div class="modal-body">
+				        <form>
+				        	<div class="form-group row">
+							  <label for="userId" class="col-xs-12 col-sm-2 col-lg-2 col-form-label">用户ID：</label>
+							  <div class="col-xs-12 col-sm-10 col-lg-10">
+							    <select class="form-control" id="userId">
+								    <option selected>选择用户...</option>
+								    <option value="1">张三</option>
+								    <option value="2">李四</option>
+								    <option value="3">王五</option>
+								</select>
+							  </div>
+							</div>
+				          <div class="form-group">
+				            <label for="recipient-name" class="form-control-label">作业等级:</label>
+				            <label class="custom-control custom-radio">
+							  <input id="level1" name="level" type="radio" class="custom-control-input">
+							  <span class="custom-control-indicator"></span>
+							  <span class="custom-control-description">A</span>
+							</label>
+							<label class="custom-control custom-radio">
+							  <input id="level2" name="level" type="radio" class="custom-control-input">
+							  <span class="custom-control-indicator"></span>
+							  <span class="custom-control-description">B</span>
+							</label>
+							<label class="custom-control custom-radio">
+							  <input id="level3" name="level" type="radio" class="custom-control-input">
+							  <span class="custom-control-indicator"></span>
+							  <span class="custom-control-description">C</span>
+							</label>
+							<label class="custom-control custom-radio">
+							  <input id="level4" name="level" type="radio" class="custom-control-input">
+							  <span class="custom-control-indicator"></span>
+							  <span class="custom-control-description">D</span>
+							</label>
+				          </div>
+				          <div class="form-group">
+				            <label class="form-control-label">喜欢？:</label>
+				            <label class="custom-control custom-radio">
+							  <input id="radio1" name="radio" type="radio" class="custom-control-input">
+							  <span class="custom-control-indicator"></span>
+							  <span class="custom-control-description">点赞</span>
+							</label>
+							<label class="custom-control custom-radio">
+							  <input id="radio2" name="radio" type="radio" class="custom-control-input">
+							  <span class="custom-control-indicator"></span>
+							  <span class="custom-control-description">差评赞</span>
+							</label>
+							<label class="custom-control custom-radio">
+							  <input id="radio3" name="radio" type="radio" class="custom-control-input">
+							  <span class="custom-control-indicator"></span>
+							  <span class="custom-control-description">弃权</span>
+							</label>
+				          </div>
+				          <div class="form-group">
+				            <label for="message-text" class="form-control-label">我对同学有话说:</label>
+				            <textarea class="form-control" id="message-text"></textarea>
+				          </div>
+				        </form>
+				      </div>
+				      <div class="modal-footer">
+				        <button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+				        <button type="button" class="btn btn-primary">提交</button>
+				      </div>
+				    </div>
+				  </div>
+	</div>
+	
+	<!-- 评价列表 -->
+	<div class="modal fade" id="myModalList" tabindex="-1" role="dialog" aria-labelledby="myModalList" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">评论列表</h5>
+				    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				    	<span aria-hidden="true">&times;</span>
+				    </button>
+				</div>
+				<div class="modal-body">
+					<ul class="list-unstyled">
+					  <li class="media">
+					    <div class="d-flex mr-3 rounded-circle"><i class="fa fa-user"></i></div>
+					    <div class="media-body">
+					      <h5 class="mt-0 mb-1">
+					      	<span>级别：A</span>
+					      	<span class="badge badge-pill badge-danger"><i class="fa fa-user"></i> 100</span>
+							<span class="badge badge-pill badge-default"><i class="fa fa-user"></i> 12</span>
+							<span class="badge badge-pill badge-primary"><i class="fa fa-user"></i> 50</span>
+					      </h5>
+					      Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. 
+					      Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. 
+					      Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+					    </div>
+					  </li>
+					</ul>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">取消</button>
+					<button type="button" class="btn btn-primary">确定</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	
+	
+	
+	<!-- script start from here --- -->
+    <!-- core vendor script -->
+    <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
+    <script src="assets/vendor/tether/dist/js/tether.min.js"></script>
+    <script src="assets/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- other plugin if needed -->
+
+    <!-- common script -->
+    <script src="assets/scripts/main.js"></script>
+
+    <!-- customer script -->
+    <script src="assets/scripts/index.js"></script>
+</body>
+</html>

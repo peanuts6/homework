@@ -4,13 +4,13 @@
 	<classPathEntry
 		location="/Users/xqy/.m2/repository/mysql/mysql-connector-java/6.0.5/mysql-connector-java-6.0.5.jar" />
 
-	<context id="context1" targetRuntime="MyBatis3Simple">
+	<context id="context1" targetRuntime="MyBatis3">
 		<commentGenerator>
 			<property name="suppressAllComments" value="false" />
 			<property name="suppressDate" value="true" />
 			<property name="javaFileEncoding" value="UTF-8" />
 		</commentGenerator>
-		<jdbcConnection driverClass="com.mysql.jdbc.Driver"
+		<jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
 			connectionURL="jdbc:mysql://localhost/leaderspring" userId="root"
 			password="123456">
 		</jdbcConnection>
@@ -18,15 +18,13 @@
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="leader.domain"
+		<javaModelGenerator targetPackage="edu.ldcollege.domain"
 			targetProject="MAVEN">
 		</javaModelGenerator>
-		<javaClientGenerator targetPackage="leader.mapping"
+		<javaClientGenerator targetPackage="edu.ldcollege.mapping"
 			targetProject="MAVEN" type="ANNOTATEDMAPPER">
 		</javaClientGenerator>
-		<table tableName="users" domainObjectName="TBUser" />
-		<table tableName="authorities" domainObjectName="TBAuthority" />
-		<table tableName="T_MENU" domainObjectName="TBMemu" />
-		<table tableName="T_USER2MENU" domainObjectName="TBUser2Memu" />
+		<table tableName="LdHomeWork" domainObjectName="LdHomeWork"/>
+		<table tableName="LdHomeWorkFB" domainObjectName="LdHomeWorkFB"/>
 	</context>
 </generatorConfiguration>

@@ -26,18 +26,18 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring.boot.version}</version>
+            <!-- <version>${spring.boot.version}</version> -->
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring.boot.version}</version>
+            <!-- <version>${spring.boot.version}</version> -->
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-websocket</artifactId>
-            <version>${spring.boot.version}</version>
+            <!-- <version>${spring.boot.version}</version> -->
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -80,10 +80,10 @@
     <build>
         <resources>
             <resource>
-                <directory>src/Main1/java</directory>
+                <directory>src/main/java</directory>
             </resource>
             <resource>
-                <directory>src/Main1/resources</directory>
+                <directory>src/main/resources</directory>
             </resource>
         </resources>
         <plugins>
@@ -115,6 +115,24 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <plugin>
+                <groupId>com.github.warmuuh</groupId>
+                <artifactId>libsass-maven-plugin</artifactId>
+                <version>0.2.8-libsass_3.4.4</version>
+                <executions>
+                    <execution>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>compile</goal>
+                        </goals>
+                    </execution>
+                </executions>
+                <configuration>
+                    <inputPath>${basedir}/src/main/resources/static/assets/styles/</inputPath>
+                    <outputPath>${basedir}/target/classes/static/assets/styles/</outputPath>
+                    <!--<includePath>${basedir}/src/main/resources/lib/bootstrap/scss/</includePath>-->
+                </configuration>
             </plugin>
         </plugins>
     </build>
