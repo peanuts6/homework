@@ -2,7 +2,10 @@ package edu.ldcollege.mapping;
 
 import edu.ldcollege.domain.LdHomeWork;
 import java.util.List;
+
+import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Result;
 import org.apache.ibatis.annotations.Results;
 import org.apache.ibatis.annotations.Select;
@@ -33,9 +36,9 @@ public interface LdHomeWorkMapper {
     int insert(LdHomeWork record);
     
     @Update({
-        "update LdHomeWork set homeworkFilePath = #{homeworkfilepath,jdbcType=VARCHAR},",
-        "homeworkFileName = #{homeworkfilename,jdbcType=VARCHAR}",
-        "where id = #{id,jdbcType=INTEGER} and userid= #{userid,jdbcType=INTEGER} "
+        "update LdHomeWork set starcount = #{starcount,jdbcType=INTEGER},",
+        "negativecount = #{negativecount,jdbcType=INTEGER}",
+        "where id = #{id,jdbcType=INTEGER}"
     })
     int update(LdHomeWork record);
     
@@ -75,4 +78,9 @@ public interface LdHomeWorkMapper {
     	"select * from LdHomeWork where classid=#{classid,jdbcType=INTEGER}"
     })
 	List<LdHomeWork> selectByClassId(Integer classid);
+    
+    @Delete({
+    	"delete from LdHomeWork where userid=#{userid,jdbcType=INTEGER} and classid=#{classid,jdbcType=INTEGER} and lessionid=#{lessionid,jdbcType=INTEGER}"
+    })
+	void delete(@Param("userid") Integer userid, @Param("classid") Integer classid, @Param("lessionid") Integer lessionid);
 }

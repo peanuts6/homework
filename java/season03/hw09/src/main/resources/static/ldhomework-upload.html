@@ -41,7 +41,11 @@
 		<div class="page-body mt-4">
 			<div class="container mb-4">
 				<div class="row">
-					<h2>上传作业</h2>
+					<div class="col-12">
+						<h2 class="page-title">
+							<i class="fa fa-dot-circle-o" aria-hidden="true"></i> <span>上传作业</span>
+						</h2>
+					</div>
 				</div>
 			</div>
 			<div class="container">
@@ -55,6 +59,7 @@
 					    <option value="2">李四</option>
 					    <option value="3">王五</option>
 					</select>
+					<p class="text-danger fade" role="userId">用户不可为空</p>
 				  </div>
 				</div>
 				<div class="form-group row">
@@ -66,6 +71,7 @@
 					    <option value="2">黄埔二期</option>
 					    <option value="3">黄埔三期</option>
 					</select>
+					<p class="text-danger fade" role="classId">班级不可为空</p>
 				  </div>
 				</div>
 				<div class="form-group row">
@@ -77,20 +83,26 @@
 					    <option value="2">Java NIO</option>
 					    <option value="3">Spring</option>
 					</select>
+					<p class="text-danger fade" role="lessionId">课程不可为空</p>
 				  </div>
 				</div>
 				<div class="form-group row">
 				  <label for="homeworkFileName" class="col-xs-12 col-sm-2 col-lg-2 col-form-label">作业名称：</label>
 				  <div class="col-xs-12 col-sm-10 col-lg-10">
 				    <input class="form-control" type="text" value="" id="homeworkFileName">
+				    <p class="text-danger fade" role="homeworkFileName">作业名称不可为空</p>
 				  </div>
 				</div>
 				<div class="form-group row">
 				  <label for="homeworkFilePath" class="col-xs-12 col-sm-2 col-lg-2 col-form-label">作业文件：</label>
 				  <div class="col-xs-12 col-sm-10 col-lg-10">
 				    <label class="custom-file">
-  						<input type="file" id="homeworkFilePath" class="custom-file-input">
+  						<input type="file" accept="application/pdf,.pptx" max-size="5MB" id="homeworkFilePath" class="custom-file-input" />
+  						<p class="text-danger fade" role="homeworkFilePath">作业不可为空</p>
   						<span class="custom-file-control"></span>
+					</label>
+					<label class="custom-file mr-2" id="previewFile">
+						<i class="fa fa-file hidden-xs-up"></i>
 					</label>
 				  </div>
 				</div>
@@ -116,6 +128,19 @@
 		</div>
 	</div>
 	
+	<!-- 操作提示 -->
+	<div id="tipModal" class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+	  <div class="modal-dialog modal-sm">
+	    <div class="modal-content">
+	    	<div class="alert alert-danger" role="alert">
+			  <h4 class="alert-heading">操作成功</h4>
+			</div>
+	    </div>
+	  </div>
+	</div>
+	
+	
+	
 	<!-- script start from here --- -->
     <!-- core vendor script -->
     <script src="assets/vendor/jquery/jquery-3.2.1.min.js"></script>
@@ -128,6 +153,6 @@
     <script src="assets/scripts/main.js"></script>
 
     <!-- customer script -->
-    <script src="assets/scripts/index.js"></script>
+    <script src="assets/scripts/homework.js"></script>
 </body>
 </html>

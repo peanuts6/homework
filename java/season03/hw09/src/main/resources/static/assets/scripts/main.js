@@ -1,36 +1,53 @@
-$( document ).ready(function() {
+;(function(global,$){
 	
-	// 搜索某班级作业
-	var classId;
-	$("#btn-search").on("click",function(e){
-		classId = $("#classId").val();
-		$.ajax({
-			url:"/ldhomework/list"+"?classId="+classId
-		})
-	});
+	function EmptyObject(obj){
+    	for(o in obj){
+    		if(o){
+    			return true;
+    		}
+    	}
+    	return false;
+    }
 	
-	// open feedback modal
-    $("#hwTable").on("click",".btn-feedback",function(e){
-    	$('#myModal').modal('show');
-    });
-    $("#hwTable").on("click",".btn-viewfeedback",function(e){
-    	$('#myModalList').modal('show');
-    });
-    $('#myModal').on('show.bs.modal', function (event) {
-    	  var button = $(event.relatedTarget) 
-    	  var recipient = button.data('whatever') 
-    	  // ajax
-    	  var modal = $(this)
-    	  modal.find('.modal-title').text('作业互评' + recipient)
-    });
+    function translateSize(size){
+    	var str = (size+'').toLowerCase();
+    	var sizeLen = str.length
+    	if(str.search(/kb/i) === sizeLen - 2){
+    		return parseFloat(str.substring(0,sizeLen-2)*1024);
+    	} else if(str.search(/mb/i) === sizeLen - 2){
+    		return parseFloat(str.substring(0,sizeLen-2)*1048576);
+    	} else if(str.search(/gb/i) === sizeLen - 2){
+    		return parseFloat(str.substring(0,sizeLen-2)*1073741824);
+    	} else if(str.search(/b/i) === sizeLen - 1){
+    		return parseFloat(str.substring(0,sizeLen-1));
+    	} else if(str.search(/s/i) === sizeLen - 1){
+    		return parseFloat(str.substring(0,sizeLen-1));
+    	} else if(str.search(/m/i) === sizeLen - 1){
+    		return parseFloat(str.substring(0,sizeLen-1)*60);
+    	} else if(str.search(/h/i) === sizeLen - 1){
+    		return parseFloat(str.substring(0,sizeLen-1)*3600);
+    	}
+    }
+    function parseTemplate(tpl,obj) {
+        if (obj == null) {
+            return;
+        }
+        return tpl.replace(/({{([\s\S]+?)}})/g, function (_, key, value) {
+            var v = value.trim();
+            if (Object.prototype.hasOwnProperty.call(obj, v)) {
+                return obj[v];
+            } else {
+                return '';
+            }
+        });
+    }
     
-    // upload file
-    $("#btn-submit").on("click",function(e){
-    	// validate
-    	
-//    	FormData fd = new FormData();
-//    	fd.append("userId",'');
-    });
-    
-    
-});
+    var Utils = global.Utils || {};
+
+    Utils.translateSize = translateSize;
+    Utils.EmptyObject = EmptyObject;
+    Utils.parseTemplate = parseTemplate;
+    global.Utils = Utils;
+
+}(window,jQuery,undefined));
+

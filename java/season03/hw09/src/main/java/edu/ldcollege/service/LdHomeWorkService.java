@@ -1,10 +1,15 @@
 package edu.ldcollege.service;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+import org.springframework.web.multipart.MultipartFile;
 
 import edu.ldcollege.domain.LdHomeWork;
 import edu.ldcollege.domain.LdHomeWorkFB;
@@ -26,9 +31,19 @@ public class LdHomeWorkService {
 	public void upload(LdHomeWork hw){
 		ldHomeWorkMapper.insert(hw);
 	}
-	// 更换作业
+	// 更新作业
 	public void update(LdHomeWork hw){
 		ldHomeWorkMapper.update(hw);
+	}
+	// 保存作业
+	public void saveUploadedFile(MultipartFile file) throws IOException{
+		byte[] bytes = file.getBytes();
+		Path path = Paths.get("/Users/xqy/projects/homework/java/season03/hw09/target/classes/static/files/"+file.getOriginalFilename());
+		Files.write(path, bytes);
+	}
+	// 删除某个作业
+	public void deleteHomework(Integer userid,Integer classid,Integer lessionid){
+		ldHomeWorkMapper.delete(userid,classid,lessionid);
 	}
 	// 获取一个作业
 	public LdHomeWork getHomework(Integer id){
@@ -54,7 +69,7 @@ public class LdHomeWorkService {
 	
 	// 提交作业互评
 	public void feedback(LdHomeWorkFB hwfb){
-		ldHomeWorkFBMapper.update(hwfb);
+		ldHomeWorkFBMapper.insert(hwfb);
 	}
 	
 	// 更改评价

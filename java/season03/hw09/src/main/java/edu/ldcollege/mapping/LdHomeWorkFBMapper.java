@@ -31,7 +31,7 @@ public interface LdHomeWorkFBMapper {
         "myid = #{myid,jdbcType=INTEGER},",
         "userid = #{userid,jdbcType=INTEGER},",
         "homeworkid = #{homeworkid,jdbcType=INTEGER},",
-        "leverflag = #{levelflag,jdbcType=CHAR}, mark = #{mark,jdbcType=VARCHAR}",
+        "levelflag = #{levelflag,jdbcType=CHAR}, mark = #{mark,jdbcType=VARCHAR}",
         "and id= #{id,jdbcType=INTEGER}"
     })
     void update(LdHomeWorkFB record);
@@ -43,9 +43,7 @@ public interface LdHomeWorkFBMapper {
      * @mbg.generated
      */
     @Select({
-        "select",
-        "id, myid, userId, homeworkId, LevelFlag, mark",
-        "from LdHomeWorkFB where homeworkId = #{homeworkId,jdbcType=INTEGER}"
+        "select * from LdHomeWorkFB where homeworkid = #{homeworkid,jdbcType=INTEGER}"
     })
     @Results({
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
@@ -55,5 +53,5 @@ public interface LdHomeWorkFBMapper {
         @Result(column="LevelFlag", property="levelflag", jdbcType=JdbcType.CHAR),
         @Result(column="mark", property="mark", jdbcType=JdbcType.VARCHAR)
     })
-    List<LdHomeWorkFB> selectAll(Integer homeworkId);
+    List<LdHomeWorkFB> selectAll(Integer homeworkid);
 }

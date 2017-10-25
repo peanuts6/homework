@@ -86,8 +86,34 @@ h4,.h4{
 	background-color:$second-color;
 	.container{
 		color:#fff;
+		img{
+			width:100px;
+		}
 	}
 }
+
+.page-title{
+	font-size:1.25rem;
+	.fa{
+		font-size:0.5rem;
+		color:$second-color;
+		}
+	}
+
+.modal-content{
+	.alert{
+		margin-bottom:0;}
+		}
+
+.mytable{
+	font-size:0.875rem;
+	}
+
+.myModal{
+	.modal-body{
+		font-size:0.875rem;
+		}
+	}
 
 
 
