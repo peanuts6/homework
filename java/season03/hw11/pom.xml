@@ -2,31 +2,30 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <parent>
+    <!-- <parent>
         <artifactId>season03</artifactId>
         <groupId>leader.us.xqy</groupId>
         <version>1.0-SNAPSHOT</version>
-    </parent>
+    </parent> -->
     <modelVersion>4.0.0</modelVersion>
-
+	<groupId>leader.us.xqy</groupId>
     <artifactId>hw11</artifactId>
-    <packaging>war</packaging>
+    <packaging>pom</packaging>
 
     <properties>
         <spring.boot.version>1.4.2.RELEASE</spring.boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <!--<parent>-->
-        <!--<groupId>org.springframework.boot</groupId>-->
-        <!--<artifactId>spring-boot-starter-parent</artifactId>-->
-        <!--<version>1.4.2.RELEASE</version>-->
-    <!--</parent>-->
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.4.2.RELEASE</version>
+    </parent>
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>1.5.4.RELEASE</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
@@ -43,18 +42,32 @@
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-core</artifactId>
-            <version>4.2.2.RELEASE</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.springframework.security</groupId>
             <artifactId>spring-security-config</artifactId>
-            <version>4.2.2.RELEASE</version>
-        </dependency>
+            </dependency>
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-web</artifactId>
-            <version>4.3.9.RELEASE</version>
+            </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-websocket</artifactId>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-redis</artifactId>
+        </dependency>
+        <dependency>
+	    	<groupId>org.springframework.session</groupId>
+	    	<artifactId>spring-session</artifactId>
+	    </dependency>
+	    <dependency>
+		    <groupId>io.jsonwebtoken</groupId>
+		    <artifactId>jjwt</artifactId>
+		    <version>0.9.0</version>
+		</dependency>
         <dependency>
             <groupId>javax.servlet</groupId>
             <artifactId>servlet-api</artifactId>
@@ -65,10 +78,10 @@
     <build>
         <resources>
             <resource>
-                <directory>src/Main1/java</directory>
+                <directory>src/main/java</directory>
             </resource>
             <resource>
-                <directory>src/Main1/resources</directory>
+                <directory>src/main/resources</directory>
             </resource>
         </resources>
         <plugins>
@@ -103,6 +116,9 @@
             </plugin>
         </plugins>
     </build>
-
-
+    <modules>
+        <module>sso</module>
+        <module>sso-ui1</module>
+    	<module>sso-ui2</module>
+    </modules>
 </project>
