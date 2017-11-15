@@ -37,9 +37,9 @@ public class MyUserDetailsService implements UserDetailsService {
 		
 		@Override
 		public List<GrantedAuthority> getAuthorities() {
-			List<GrantedAuthority> auths = getAuthorities();
-			return auths;
-//			return AuthorityUtils.createAuthorityList("ROLE_USER");
+//			List<GrantedAuthority> auths = getAuthorities();
+//			return auths;
+			return AuthorityUtils.createAuthorityList("ROLE_USER");
 		}
 		
 		@Override

@@ -27,66 +27,98 @@ import leader.sso.security.MyUserDetailsService;
 import temp.MyAuthenticationProvider;
 import temp.MyAuthenticationSuccessHandler;
 
-@Configuration
-@EnableWebSecurity
-@EnableRedisHttpSession
-@EnableGlobalMethodSecurity(prePostEnabled = true)
+//@Configuration
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 	public static final String encodeStr = "341231412423423";
 	
-	@Bean
-    protected BCryptPasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 	
-//	@Autowired
-//	MyAuthenticationProvider myAuthenticationProvider;
-//	
-//	@Autowired
-//	MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
-//	
-//	@Autowired
-//	SimpleUrlAuthenticationFailureHandler authFailureHandler;
 	
-	@Autowired
-	MyUserDetailsService userService;
+	@Configuration
+	@Order(3)
+	public static class AppSecurityConfig extends WebSecurityConfigurerAdapter{
 
-	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception{
-//		auth.authenticationProvider(myAuthenticationProvider);
-		auth.userDetailsService(new MyUserDetailsService());
-	}
-	
-	
 		@Override
 		public void configure(WebSecurity web) throws Exception {
 			web.ignoring().antMatchers("**/*.html","**/js/**","**/vendor/**","**/lib/**","**/css/**","**/styles/**","**/images/**","**/fonts/**", "**/**/favicon.ico");
 		}
+	  	
+	  	@Override
+	  	protected void configure(HttpSecurity http) throws Exception{
+	  		http.csrf().disable()
+	  			.antMatcher("/api/**")
+	  			.authorizeRequests()
+				.antMatchers("/api/**").denyAll()
+				.anyRequest().authenticated()
+	  			.and()
+				.httpBasic();
+	  		
+	  		http.antMatcher("/kingcenter/api/**")
+	  			.authorizeRequests()
+	  			.antMatchers("/kingcenter/api/**").denyAll()
+	  			.antMatchers("/kingcenter/api/{username}").access("@authz.check(#username,pricipal)")
+	  			.anyRequest().authenticated()
+	  			.and().httpBasic();
+				
+		}
+	}
+	
+	@Configuration
+	@Order(1)
+	public static class AdminSecurityConfig extends WebSecurityConfigurerAdapter{
+		@Bean
+	    protected BCryptPasswordEncoder passwordEncoder() {
+	        return new BCryptPasswordEncoder();
+	    }
+		
+		@Autowired
+		MyUserDetailsService userService;
+
+		@Override
+		protected void configure(AuthenticationManagerBuilder auth) throws Exception{
+//			auth.authenticationProvider(myAuthenticationProvider);
+			auth.userDetailsService(new MyUserDetailsService());
+		}
 		
 		@Override
-		protected void configure(HttpSecurity http) throws Exception{
-			http.csrf().disable()
-				.authorizeRequests()
-				.antMatchers("/**").permitAll()
-				.antMatchers("/auth/**").permitAll()
-				.and()
-				.authorizeRequests()
-				.antMatchers("/api/**","/kingcenter/api/**").denyAll()
-				.anyRequest().hasRole("USER")
-				.antMatchers("/kingcenter/api/{username}").access("@authz.check(#username,pricipal)")
-				.and()
-				.authorizeRequests()
+		protected void configure(HttpSecurity http) throws Exception {
+			http.antMatcher("/admin/api/**")
+	  			.authorizeRequests()
 				.antMatchers("/admin/api/**").denyAll()
-				.anyRequest().hasRole("ADMIN")
-				.and()
-				.authorizeRequests()
-				.antMatchers("/manage/api/**").denyAll()
-				.anyRequest().hasRole("manage")
-				.antMatchers("/manage/api/createuser/**").hasAuthority("op_createuser")
-				.anyRequest().authenticated()
-				.and()
+	  			.anyRequest().hasRole("ADMIN")
+	  			.anyRequest().authenticated()
+	  			.and()
 				.httpBasic();
 		}
+//		@Override
+//		protected void configure(final AuthenticationManagerBuilder auth) throws Exception{
+//			auth.inMemoryAuthentication()
+//					.withUser("xqy").password("123").roles("USER","ADMIN","manage","op_createuser")
+//					.and()
+//					.withUser("admin").password("9527").roles("ADMIN")
+//					.and()
+//					.withUser("manage").password("123").roles("USER","MANAGE")
+//					.and()
+//					.withUser("yoyo").password("123").roles("USER","MANAGE","OP_CREATEUSER");
+//		}
+	}
+	
+	@Configuration
+	@Order(2)
+	public static class ManageSecurityConfig extends WebSecurityConfigurerAdapter{
+		@Override
+		protected void configure(HttpSecurity http) throws Exception {
+			http.antMatcher("/manage/api/**")
+	  			.authorizeRequests()
+				.antMatchers("/manage/api/**").hasRole("manage")
+				.antMatchers("/manage/api/createuser/**")
+				.access("hasRole('manage') and hasRole('op_createuser')")
+	  			.antMatchers("/manage/api/**").denyAll()
+	  			.anyRequest().authenticated()
+	  			.and()
+	  			.httpBasic();
+	  		}
+	}
+	
 		
 		
 

@@ -50,7 +50,8 @@ public interface UserMapper {
         @Result(column="id", property="id", jdbcType=JdbcType.INTEGER),
         @Result(column="username", property="username", jdbcType=JdbcType.VARCHAR),
         @Result(column="password", property="password", jdbcType=JdbcType.VARCHAR),
-        @Result(column="enabled", property="enabled", jdbcType=JdbcType.BIT)})
+        @Result(column="enabled", property="enabled", jdbcType=JdbcType.BIT)
+    })
     User getUserByName(String username);
 
     /**

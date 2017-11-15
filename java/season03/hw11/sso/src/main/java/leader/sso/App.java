@@ -6,10 +6,16 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.support.SpringBootServletInitializer;
 import org.springframework.context.ConfigurableApplicationContext;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
+import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 
 @SpringBootApplication(scanBasePackages="leader.sso.**")
 @MapperScan("leader.sso.mapping")
+@EnableWebSecurity
+@EnableRedisHttpSession
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class App extends SpringBootServletInitializer
 {
 	@Override

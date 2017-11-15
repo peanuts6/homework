@@ -18,12 +18,12 @@
 		<javaTypeResolver>
 			<property name="forceBigDecimals" value="false" />
 		</javaTypeResolver>
-		<javaModelGenerator targetPackage="leader.sso.domain"
+		<javaModelGenerator targetPackage="leader.sso.model"
 			targetProject="MAVEN">
 		</javaModelGenerator>
-		<!-- <sqlMapGenerator targetPackage="leader.sso.xml"  targetProject="MAVEN">
-    	</sqlMapGenerator> -->
-		<javaClientGenerator targetPackage="leader.sso.mapping"
+		<sqlMapGenerator targetPackage="leader.xml"  targetProject="MAVEN">
+    	</sqlMapGenerator>
+		<javaClientGenerator targetPackage="leader.sso.dao"
 			targetProject="MAVEN" type="ANNOTATEDMAPPER">
 		</javaClientGenerator>
 		

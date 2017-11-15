@@ -7,16 +7,26 @@ import javax.servlet.http.HttpSession;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.CookieValue;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import leader.sso.domain.User;
+import leader.sso.service.UserService;
+
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
 	Logger logger = LoggerFactory.getLogger(AuthController.class);
+	
+	@Autowired
+	UserService userService;
 	
 	@RequestMapping(value="api/token",method=RequestMethod.GET)
 	@ResponseBody
@@ -27,15 +37,17 @@ public class AuthController {
 	
 	@RequestMapping(value="api/login",method = RequestMethod.POST)
 	@ResponseBody
-	public String login(String username,String password,String remember_me){
+	public ResponseEntity<User> login(String username,String password,String remember_me){
 		logger.info("login:"+username+" "+password+" "+remember_me);
-		return "login success";
+		User user = userService.getUserByName(username);
+		return new ResponseEntity<User>(HttpStatus.OK);
 	}
 	
 	@RequestMapping(value="api/logout",method=RequestMethod.GET)
 	@ResponseBody
-	public String logout(){
-		return "logout success";
+	public ResponseEntity<?> logout(){
+		SecurityContextHolder.getContext().setAuthentication(null);
+		return new ResponseEntity<String>("not login",HttpStatus.UNAUTHORIZED);
 	}
 	
 	@RequestMapping("api/getcookie1")

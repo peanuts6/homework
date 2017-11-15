@@ -11,7 +11,6 @@
 			options.contentType = false;
     	    options.processData = false;
 		}
-		
 		options.beforeSend = function(jqXhr,settings){
 			var headers = jqXhr.getAllResponseHeaders();
 			if(jwt){
@@ -25,13 +24,11 @@
 			// close loading
 			console.log('complete',jqXhr,textStatus)
 			global._loading.hide();
-			// console.log(jqXhr);
 			if(401 == jqXhr.status){
 				document.location.href = '/auth/login.html?redirectUrl='+window.encodeURIComponent(window.location.href);
 			}
 		};
-		options.error = function(jqXhr,status){
-			// "timeout" "error" "abort" "parsererror"
+		options.error = function(jqXhr,status){ // "timeout" "error" "abort" "parsererror"
 			console.log('error',jqXhr,status)
 		}
 		//console.log(options)
