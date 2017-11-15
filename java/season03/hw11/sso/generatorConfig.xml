@@ -27,7 +27,7 @@
 			targetProject="MAVEN" type="ANNOTATEDMAPPER">
 		</javaClientGenerator>
 		
-		<table schema="leaderspring" tableName="members" domainObjectName="User"/>
+		<table schema="leaderspring" tableName="t_users" domainObjectName="User"/>
 		<table schema="leaderspring" tableName="authorities" domainObjectName="Authority"/>
 	</context>
 </generatorConfiguration>

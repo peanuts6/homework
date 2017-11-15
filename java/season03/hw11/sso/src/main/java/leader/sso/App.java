@@ -9,7 +9,7 @@ import org.springframework.context.ConfigurableApplicationContext;
 
 
 @SpringBootApplication(scanBasePackages="leader.sso.**")
-@MapperScan("leader.sso.mapper")
+@MapperScan("leader.sso.mapping")
 public class App extends SpringBootServletInitializer
 {
 	@Override

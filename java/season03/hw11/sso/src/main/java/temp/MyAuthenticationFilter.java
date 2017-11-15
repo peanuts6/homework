@@ -1,8 +1,11 @@
-package leader.sso.security;
+package temp;
 
 import java.io.IOException;
 
+import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
+import javax.servlet.ServletRequest;
+import javax.servlet.ServletResponse;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -10,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.springframework.security.authentication.AuthenticationServiceException;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.web.authentication.AbstractAuthenticationProcessingFilter;
 import org.springframework.security.web.util.matcher.RequestMatcher;
 import org.springframework.util.StringUtils;
@@ -18,35 +22,43 @@ public class MyAuthenticationFilter extends AbstractAuthenticationProcessingFilt
 	
 	protected MyAuthenticationFilter(RequestMatcher requiresAuthenticationRequestMatcher) {
 		super(requiresAuthenticationRequestMatcher);
-		// TODO Auto-generated constructor stub
 		setAuthenticationManager( super.getAuthenticationManager() );
 	}
 
 	@Override
 	public Authentication attemptAuthentication(HttpServletRequest request, HttpServletResponse response)
 			throws AuthenticationException, IOException, ServletException {
-		// TODO Auto-generated method stub
 		
 		// 取Cookie 
 		String token = "";
 		Cookie[] cookies = request.getCookies();
-		if( cookies == null || cookies.length < 1 ) {
-			throw new AuthenticationServiceException( "Invalid Token" );
-		}
 		
 		Cookie sessionCookie = null;
-		for( Cookie cookie : cookies ) {
-			if( ( "JSESSIONID" ).equals( cookie.getName() ) ) {
-				sessionCookie = cookie;
-				break;
+		if(!( cookies == null || cookies.length < 1 )) {
+			for( Cookie cookie : cookies ) {
+				if( ( "JSESSIONID" ).equals( cookie.getName() ) ) {
+					sessionCookie = cookie;
+					break;
+				}
 			}
 		}
 		
 		// 取不到再取Header
 		if( sessionCookie == null || StringUtils.isEmpty( sessionCookie.getValue() ) ) {
-			throw new AuthenticationServiceException( "Invalid Token" );
+			token = request.getHeader("Authorization"); // "Imking "
+		} else{
+			token = sessionCookie.getValue();
 		}
-		return null;
+		
+//		Authentication authentication = (Authentication)new MyAuthenticationToken();
+//		SecurityContextHolder.getContext().setAuthentication(authentication);
+		
+		return SecurityContextHolder.getContext().getAuthentication();
+	}
+	
+	@Override
+	public void doFilter(ServletRequest req,ServletResponse res,FilterChain chain) throws IOException, ServletException{
+		super.doFilter(req, res, chain);
 	}
 
 }
