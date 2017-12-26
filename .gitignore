@@ -1,20 +1,21 @@
-java/season03/hw03-bak
+java/season03/*-bak
 
 # maven #
-target
-*.log
+**/target
+**/bin
 
 # eclipse #
-.settings
-.project
-.classpath
-.log
+**/.settings
+**/.project
+**/.classpath
+**/.log
 
 # windows #
 Thumbs.db
 
 # Mac #
 .DS_Store
+**/.DS_Store
 
 # Package Files #
 *.war
@@ -22,9 +23,8 @@ Thumbs.db
 
 # idea #
 *.iml
-.idea/
-overlays
-bin
+**/.idea/
+**/overlays
 
 # VSCode #
 .vscode

@@ -4,7 +4,7 @@ import org.springframework.context.annotation.Lazy;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
-import leader.domain.Org;
+import leader05.domain.Org;
 @Lazy
 @Order(100) 
 @Component("orgDao") 

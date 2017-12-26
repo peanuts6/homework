@@ -1,4 +1,4 @@
-package leader.domain;
+package leader05.domain;
 
 public class Org {
 private int id;

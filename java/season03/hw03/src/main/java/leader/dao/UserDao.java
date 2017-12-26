@@ -1,7 +1,7 @@
 package leader.dao;
 
 import leader.domain.User;
-import util.DataSource;
+import leader.util.DataSource;
 
 import java.util.*;
 

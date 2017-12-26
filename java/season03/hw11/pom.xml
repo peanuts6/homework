@@ -2,25 +2,35 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-    <!-- <parent>
+    <parent>
         <artifactId>season03</artifactId>
         <groupId>leader.us.xqy</groupId>
         <version>1.0-SNAPSHOT</version>
-    </parent> -->
+    </parent>
     <modelVersion>4.0.0</modelVersion>
-	<groupId>leader.us.xqy</groupId>
     <artifactId>hw11</artifactId>
-    <packaging>pom</packaging>
+    <packaging>jar</packaging>
 
     <properties>
         <spring.boot.version>1.4.2.RELEASE</spring.boot.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-    <parent>
+    <dependencyManagement>
+	  <dependencies>
+	    <dependency>
+	    	<groupId>org.springframework.boot</groupId>
+	        <artifactId>spring-boot-dependencies</artifactId>
+			<version>1.4.2.RELEASE</version>
+			<type>pom</type>
+			<scope>import</scope>
+	    </dependency>
+	  </dependencies>
+  </dependencyManagement>
+    <!-- <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>1.4.2.RELEASE</version>
-    </parent>
+    </parent> -->
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -116,9 +126,4 @@
             </plugin>
         </plugins>
     </build>
-    <modules>
-        <module>sso</module>
-        <module>sso-ui1</module>
-    	<module>sso-ui2</module>
-    </modules>
 </project>
