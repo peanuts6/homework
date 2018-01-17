@@ -6,6 +6,7 @@ import org.junit.BeforeClass;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runners.*;
+import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
@@ -15,13 +16,14 @@ public class Test1 {
 	static ApplicationContext ctx = null;
 
 	enum TestStage {
-		test01_DeleteUser, test02_InsertUser
+		test01_DeleteUser,
+		test02_InsertUser
 	}
 
 	static TestStage curStage = TestStage.test01_DeleteUser;
 
 	@BeforeClass
-	public static void initTest() {
+	public static void initTest() throws BeansException {
 		System.out.println("init test ");
 		ctx = new ClassPathXmlApplicationContext("applicationContext.xml");
 
