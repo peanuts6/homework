@@ -8,10 +8,10 @@ import java.util.Comparator;
  */
 public class Salary implements Serializable{
     public static final int BASE_MONTH=13;
-    String name;
-    int baseSalary;
-    int bonus;
-    int totalIncome;
+    public String name;
+    public int baseSalary;
+    public int bonus;
+    public int totalIncome;
 
     public static final Comparator<Salary> BY_NAME = (o1, o2)->o1.name.compareTo(o2.name);
     public static final Comparator<Salary> BY_BASESALARY = (o1, o2)->o2.baseSalary - o1.baseSalary;

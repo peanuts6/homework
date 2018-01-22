@@ -35,3 +35,7 @@ Thumbs.db
 #*.sml#
 
 **/out/
+**/salary.txt
+**/bigEndian.txt
+**/littleEndian.txt
+

@@ -122,6 +122,13 @@ public class SortDemo {
         }
         return arr;
     }
+    public static Salary[] makeArray(int size){
+        Salary[] arr = new Salary[size];
+        for(int i=0;i<size;i++){
+            arr[i] = new Salary(RandomString(5),r.nextInt(1000000-50000+1)+50000,r.nextInt(100000));
+        }
+        return arr;
+    }
     public Salary1[] makeArray2(){
         int ARR_SIZE=10000;
         Salary1[] arr = new Salary1[ARR_SIZE];
