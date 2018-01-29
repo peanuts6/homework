@@ -1,5 +1,11 @@
 # priority queue
 
+* Collections(集合)：插入、删除、可迭代
+* Stack(栈)：删除最近的元素(LIFO)
+* Queue(队列)：删除最晚插入的元素(FIFO)
+* Randomized queue：随机删除一个元素
+* PriorityQueue：删除最大(或最小)的元素
+
 
 
 

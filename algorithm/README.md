@@ -9,8 +9,13 @@
 * 有趣
 
 ## 基础概念
-* Algorithm: 解决问题的方法
-* Data structure: 存储数据的方法
+- [Algorithm](#algorithm)
+  - [why study?](#why-study)
+  - [基础概念](#%E5%9F%BA%E7%A1%80%E6%A6%82%E5%BF%B5)
+  - [前提](#%E5%89%8D%E6%8F%90)
+  - [主题](#%E4%B8%BB%E9%A2%98)
+  - [如何开发数据结构](#%E5%A6%82%E4%BD%95%E5%BC%80%E5%8F%91%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84)
+  - [cap](#cap)
 
 ## 前提
 * 基本编程能力，掌握某一门编程语言

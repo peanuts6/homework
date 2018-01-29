@@ -1,21 +1,18 @@
 package functionjava.hw02;
 
 import functionjava.hw01.Salary;
-import functionjava.hw01.SortDemo;
+import functionjava.hw01.Q72;
+import functionjava.hw01.SortUtil;
 
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.MappedByteBuffer;
 import java.nio.channels.FileChannel;
-import java.nio.charset.Charset;
 import java.util.*;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import static java.util.Collections.reverseOrder;
 import static java.util.stream.Collectors.groupingBy;
-import static java.util.stream.Collectors.mapping;
-import static java.util.stream.Collectors.toList;
 
 /**
  * Created by xqy on 18/1/18.
@@ -28,19 +25,20 @@ public class FileDemo {
 
 //        writeFile(fileUrl);
 
+//        testSort(200);
 
 //        readFile(fileUrl);
 
 //        readFileWithFileChannel(fileUrl);
 
-        readFileWithFileChannel2(fileUrl);
+//        readFileWithFileChannel2(fileUrl);
 
 
     }
 
     public static void writeFile(String fileUrl){
         PrintWriter outputStream = null;
-        Salary[] arr = SortDemo.makeArray(10000000);
+        Salary[] arr = SortUtil.makeArray(10000000);
         try {
             outputStream = new PrintWriter(new FileWriter(fileUrl));
             Arrays.stream(arr).forEach(outputStream::println);
@@ -51,13 +49,31 @@ public class FileDemo {
         }
     }
 
-
     public static void sortList(List<Salary> lists){
         lists.stream()
-                .collect(Collectors.groupingBy(s->s.name.substring(0,2),Collectors.summingLong(o->o.totalIncome)))
-                .entrySet().stream().sorted(reverseOrder(Map.Entry.comparingByValue()))
+                .collect(Collectors.groupingBy(s->s.name.substring(0,2)))
+                .entrySet().stream().collect(Collectors.toMap(
+                        Map.Entry::getKey,
+                        e -> {
+                            long c=e.getValue().stream()
+                            .collect(Collectors.summarizingLong(s->s.totalIncome)).getSum()/10000;
+                            int b = (int) e.getValue().stream().count();
+                            return new Result(c,b);
+                        }
+                ))
+                .entrySet().stream()
+                .sorted(new Comparator<Map.Entry<String, Result>>() {
+                    @Override
+                    public int compare(Map.Entry<String, Result> o1, Map.Entry<String, Result> o2) {
+                        return (int) (o2.getValue().totalIncome - o1.getValue().totalIncome);
+                    }
+                })
                 .limit(10)
-                .forEach(e->System.out.println(e.getKey()+":"+(e.getValue()/10000)+"万"));
+                .forEach(e->System.out.println(e.getKey()+","+e.getValue().toString()+""));
+    }
+    public static void testSort(int N){
+        List<Salary> list = SortUtil.makeList(N);
+        sortList(list);
     }
 
     public static Salary getSalary(String s){
